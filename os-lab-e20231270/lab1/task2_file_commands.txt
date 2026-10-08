@@ -1,0 +1,4 @@
+/home/gic-sok-vireak/oslab-work/lab1/task2_files
+cloud_renamed.txt
+forest.txt
+This is file forest
