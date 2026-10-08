@@ -1,4 +1,4 @@
-/home/gic-sok-vireak/oslab-work/lab1/task2_files
+/home/viris/OS-GIC-e20231270/os-lab-e20231270/lab1/task2_files
 cloud_renamed.txt
 forest.txt
 This is file forest
