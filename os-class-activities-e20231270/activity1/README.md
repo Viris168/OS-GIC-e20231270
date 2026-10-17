@@ -212,26 +212,22 @@ Screenshot of running on Windows:
 
 ## Task 3: strace Analysis
 
-**Describe what you observed:** I was surprised that even the direct system-call
-program made 33 system calls. Most of those calls come from process startup and the
-dynamic linker loading `libc`, not from my file code. The library version made 38
-calls, so it made 5 more calls than the system-call version. The important file
-operations were the same in both traces: `openat()`, `write()`, and `close()`. The
-library version also showed extra startup work such as `fstat()`, `brk()`, and
-`getrandom()`. The reader traces showed the same pattern, with the library reading
-4096 bytes at a time through its buffer while my system-call reader requested 256
-bytes at a time.
+**Describe what you observed:** I ran `strace` on both file-creator programs and
+compared the output. Both programs still make many system calls because the dynamic
+linker and C runtime start before `main()`. The library version made 38 calls and the
+direct version made 33. Both traces show the same key operations on `output.txt`:
+`openat()`, `write()`, and `close()`. For the readers, the library version reads 4096
+bytes at a time through its buffer, while my system-call version reads 256 bytes at a
+time.
 
 ### strace Output — Library Version (File Creator)
 
 <!-- Screenshot: strace -e trace=openat,read,write,close ./file_creator_lib -->
-<!-- IMPORTANT: Highlight/annotate the key system calls in your screenshot -->
 ![strace - Library version File Creator](screenshots/strace_lib_creator.png)
 
 ### strace Output — System Call Version (File Creator)
 
 <!-- Screenshot: strace -e trace=openat,read,write,close ./file_creator_sys -->
-<!-- IMPORTANT: Highlight/annotate the key system calls in your screenshot -->
 ![strace - System call version File Creator](screenshots/strace_sys_creator.png)
 
 ### strace Output — Library Version (File Reader or Dir Listing)
@@ -252,43 +248,31 @@ bytes at a time.
 
 1. **How many system calls does the library version make compared to the system call version?**
 
-   > For the file creator, `strace -c` reported 38 calls for the library version and
-   > 33 calls for the system-call version. The library version therefore made 5 more
-   > calls, about 15% more. For the file reader, the filtered traces show the same
-   > core calls (`openat`, `read`, `write`, `close`) in both versions, but the library
-   > uses a 4096-byte buffered read while the system-call version uses 256 bytes.
+   > `strace -c` reported 38 calls for the library creator and 33 for the system-call
+   > creator, so the library version made 5 more calls. The reader traces show the same
+   > core calls, but different read sizes: 4096 bytes for the library and 256 bytes for
+   > the system-call version.
 
 2. **What extra system calls appear in the library version? What do they do?**
 
-   > The extra calls in the library creator were two additional `fstat()` calls, two
-   > additional `brk()` calls, and one `getrandom()` call. `fstat()` retrieves file
-   > metadata for the standard streams; `brk()` adjusts the process heap as the
-   > library allocates memory; and `getrandom()` supplies random bytes used during
-   > runtime setup. Both versions also contain startup calls such as `mmap()`,
-   > `mprotect()`, and `munmap()` for mapping libraries, `pread64()` for reading
-   > library headers, `arch_prctl()` for thread-local storage, `set_tid_address()` and
-   > `set_robust_list()` for thread cleanup, `prlimit64()` for resource limits, and
-   > `rseq()` for restartable sequences. These are mostly dynamic-linker and C-runtime
-   > initialization, not file I/O.
+   > The library version had two more `fstat()` calls, two more `brk()` calls, and one
+   > `getrandom()` call. `fstat()` gets file metadata, `brk()` adjusts the heap, and
+   > `getrandom()` provides random bytes for runtime setup. Both versions also use
+   > `mmap()`, `mprotect()`, `munmap()`, and other calls for loading libraries and
+   > starting the process. These calls come from startup, not from my file operations.
 
 3. **How many `write()` calls does `fprintf()` actually produce?**
 
-   > For the small message in this program, `fprintf()` produced one `write()` of 36
-   > bytes, flushed when `fclose()` closed the stream. The separate `printf()` for the
-   > success message produced one more `write()` of 27 bytes, so `strace -c` reports
-   > two `write()` calls in total. The library buffers output, so one `fprintf()` call
-   > does not necessarily mean one immediate `write()` call.
+   > For this short message, `fprintf()` produced one `write()` of 36 bytes when the
+   > stream was flushed by `fclose()`. The `printf()` for the success message produced
+   > another `write()` of 27 bytes, so the summary shows 2 writes in total.
 
 4. **In your own words, what is the real difference between a library function and a system call?**
 
-   > A library function is ordinary user-space code that runs without changing
-   > privilege level. It may do work entirely in user space, or it may eventually
-   > invoke one or more system calls. A system call is a controlled entry into the
-   > kernel: the CPU switches to kernel mode, the kernel validates the request, and
-   > the caller receives a result. Library functions are convenient, portable, and
-   > often buffered, but they do not have direct hardware access. System calls provide
-   > the actual interface to kernel services, with more explicit control and more
-   > responsibility for the programmer.
+   > A library function is normal user-space code that may call system calls internally.
+   > A system call is the actual request to the kernel. The library function is easier to
+   > use and may buffer data, while a system call gives direct control and crosses into
+   > kernel mode.
 
 ---
 
