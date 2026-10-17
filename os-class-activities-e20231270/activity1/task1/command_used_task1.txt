@@ -1,0 +1,26 @@
+
+# Task 1: File creator and reader
+
+# Compile and run file_creator_lib.c (C standard library)
+gcc -o file_creator_lib file_creator_lib.c
+./file_creator_lib
+cat output.txt
+
+# Compile and run file_creator_sys.c (POSIX system calls)
+gcc -o file_creator_sys file_creator_sys.c
+./file_creator_sys
+cat output.txt
+
+# Compile and run file_reader_lib.c (C standard library)
+gcc -o file_reader_lib file_reader_lib.c
+./file_reader_lib
+
+# Compile and run file_reader_sys.c (POSIX system calls)
+gcc -o file_reader_sys file_reader_sys.c
+./file_reader_sys
+
+# Bonus: file_creator_win.c (Windows API, cross-compiled on Linux)
+sudo apt install mingw-w64 wine64
+x86_64-w64-mingw32-gcc -o file_creator_win.exe file_creator_win.c
+wine file_creator_win.exe
+cat output.txt
