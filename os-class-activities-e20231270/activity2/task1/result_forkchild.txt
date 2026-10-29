@@ -1,0 +1,10 @@
+total 32
+drwxr-xr-x 2 viris viris  4096 Oct 26 23:46 .
+drwxr-xr-x 3 viris viris  4096 Oct 26 23:44 ..
+-rwxr-xr-x 1 viris viris 16392 Oct 26 23:45 forkchild
+-rw-r--r-- 1 viris viris  1370 Oct 26 23:45 forkchild.c
+-rw-r--r-- 1 viris viris     0 Oct 26 23:46 result_forkchild.txt
+Parent process (PID: 2392) — creating child...
+Parent: waiting for child (PID: 2393) to finish...
+Parent: child exited with status 0
+Parent: done.

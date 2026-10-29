@@ -1,0 +1,3 @@
+    1  ps -ef --forest | grep -v grep | grep forkchild
+    2  pstree -p $(pgrep -o forkchild)
+    3  history | tail -n 20 > command_used_forkchild.txt

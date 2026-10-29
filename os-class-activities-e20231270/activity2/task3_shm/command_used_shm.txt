@@ -1,0 +1,6 @@
+cd ~/activity2/task3_shm
+gcc -o shm-producer shm-producer.c -lrt
+gcc -o shm-consumer shm-consumer.c -lrt
+./shm-producer
+./shm-consumer > result-shm-ipc.txt
+cat result-shm-ipc.txt
