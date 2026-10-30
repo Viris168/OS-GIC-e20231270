@@ -1,0 +1,16 @@
+cd incoming
+mv "cash flow.txt" ../reports/
+cd ..
+mv "$OSLAB_WORKSPACE/lab2/incoming/payroll may.txt" "$OSLAB_WORKSPACE/lab2/reports/"
+cp "reports/cash flow.txt" "reports/payroll may.txt" "TechCorp/Legal/"
+cp "reports/cash flow.txt" "TechCorp/Legal/archive/first-original.txt"
+cd "TechCorp/HR"
+cat "../Legal/cash flow.txt"
+cat "$OSLAB_WORKSPACE/lab2/TechCorp/Legal/cash flow.txt"
+
+Step 6 decision.
+In step 3 I used relative paths because I was already in the lab folder and they are short.
+Absolute paths would be better in a script, or when I run the command from a different folder, because they always point to the same place.
+
+Error: cat: 'reports/cash flow.txt': No such file or directory
+Fix: ../../reports/cash flow.txt

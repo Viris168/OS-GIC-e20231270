@@ -1,0 +1,2 @@
+With quotes the shell does not expand the star, so cp looks for one file literally named *.txt and fails.
+No, the command does not copy reports/.hidden.txt, because the star does not match names that begin with a dot.

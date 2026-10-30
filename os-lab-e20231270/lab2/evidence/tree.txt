@@ -1,0 +1,36 @@
+.
+├── evidence
+│   ├── challenge.txt
+│   ├── checkpoint.txt
+│   ├── paths.txt
+│   ├── plus.txt
+│   └── tree.txt
+├── incoming
+├── mess
+│   ├── a
+│   │   └── b
+│   └── c
+│       └── found.txt
+├── practice
+│   ├── notes
+│   │   └── welcome note.txt
+│   └── welcome note.txt
+├── reports
+│   ├── cash flow.txt
+│   ├── payroll may.txt
+│   └── README.txt
+└── TechCorp
+    ├── Engineering
+    │   ├── cash flow.txt
+    │   ├── found.txt
+    │   ├── payroll may.txt
+    │   └── README.txt
+    ├── HR
+    │   └── drafts
+    └── Legal
+        ├── archive
+        │   └── first-original.txt
+        ├── cash flow.txt
+        └── payroll may.txt
+
+16 directories, 18 files

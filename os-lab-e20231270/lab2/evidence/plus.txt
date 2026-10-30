@@ -1,0 +1,5 @@
+cd mess/c
+mv "../a/b/lost file.txt" found.txt
+cd ../../mess/a/b
+cp ../../c/found.txt ../../../TechCorp/Engineering/
+I needed 3 .. to reach the lab folder
