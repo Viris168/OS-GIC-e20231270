@@ -1,0 +1,30 @@
+  124  cat result_threads.txt
+  125  touch threads_mutex.c
+  126  nano threads_mutex.c
+  127  gcc -o threads_mutex threads_mutex.c -pthread
+  128  ./threads_mutex > result_threads_mutex.txt 2>&1
+  129  cat result_threads_mutex.txt
+  130  history | tail -n 20 > command_used_threads.txt
+  131  cd ..
+  132  mkdir task3_java
+  133  cd ../task3_java
+  134  cd task3_java
+  135  touch ThreadDemo.java
+  136  nano ThreadDemo.java
+  137  javac ThreadDemo.java
+  138  java ThreadDemo > result_thread_demo.txt 2>&1
+  139  touch RunnableDemo.java
+  140  nano RunnableDemo.java
+  141  javac RunnableDemo.java
+  142  java RunnableDemo > result_runnable_demo.txt 2>&1
+  143  cat result_runnable_demo.txt
+  144  touch PoolDemo.java
+  145  nano PoolDemo.java
+  146  javac PoolDemo.java
+  147  cat result_pool_demo.txt
+  148  javac PoolDemo.java
+  149  nano PoolDemo.java
+  150  javac PoolDemo.java
+  151  java PoolDemo > result_pool_demo.txt 2>&1
+  152  cat result_pool_demo.txt
+  153  history | tail -n 30 > command_used_java.txt

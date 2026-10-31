@@ -1,0 +1,20 @@
+   94  mkdir activity3
+   95  cd activity3
+   96  mkdir task1_socket
+   97  cd task1_socket
+   98  touch server.c
+   99  nano server.c
+  100  touch client.c
+  101  nano client.c
+  102  $ gcc -o server server.c
+  103  $ gcc -o client client.c
+  104  gcc -o server server.c && gcc -o client client.c
+  105  gcc -o server server.c 
+  106  gcc -o client client.c
+  107  ./server
+  108  ./server > result_server.txt 2>&1 & sleep 1
+  109  cat result_server.txt result_client.txt > result_socket.txt
+  110  cat result_server.txt
+  111  cat result_client.txt
+  112  cat result_socket.txt
+  113  history | tail -n 20 > command_used_socket.txt

@@ -1,0 +1,29 @@
+viris       3381    2051    3381  0    5 20:05 pts/2    00:00:00 ./threads_observe
+viris       3381    2051    3384  0    5 20:05 pts/2    00:00:00 ./threads_observe
+viris       3381    2051    3385  0    5 20:05 pts/2    00:00:00 ./threads_observe
+viris       3381    2051    3386  0    5 20:05 pts/2    00:00:00 ./threads_observe
+viris       3381    2051    3387  0    5 20:05 pts/2    00:00:00 ./threads_observe
+viris       3392    2051    3392  0    1 20:05 pts/2    00:00:00 grep --color=auto threads_observe
+    PID    SPID TTY          TIME CMD
+   3381    3381 pts/2    00:00:00 threads_observe
+   3381    3384 pts/2    00:00:00 threads_observe
+   3381    3385 pts/2    00:00:00 threads_observe
+   3381    3386 pts/2    00:00:00 threads_observe
+   3381    3387 pts/2    00:00:00 threads_observe
+--- /proc/3442/task/ listing ---
+3442
+3444
+3445
+3446
+3447
+    PID     LWP NLWP PSR STAT COMMAND
+   3943    3943    5   5 Sl   threads_observe
+   3943    3945    5   8 Sl   threads_observe
+   3943    3946    5   1 Sl   threads_observe
+   3943    3947    5   4 Sl   threads_observe
+   3943    3948    5   6 Sl   threads_observe
+    PID    PPID PSR COMMAND
+      3       2   4 init-watcher
+      9       2   6 init
+    380       2   4 login
+   2045       2  11 SessionLeader
