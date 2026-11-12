@@ -1,0 +1,4 @@
+
+After rm one.txt the remaining names show link count 2; after rm two.txt, three.txt shows 1.
+The data is not gone after deleting one.txt, because other names still point to the inode
+. It is gone only when the last name is removed (link count 0) and no program has the file open.

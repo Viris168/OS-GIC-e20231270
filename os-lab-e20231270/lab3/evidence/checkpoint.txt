@@ -1,0 +1,13 @@
+
+=== CHECKPOINT AFTER REPAIR ===
+19142485 -rw-rw-r-- 2 gic-sok-vireak gic-sok-vireak 25 Nov 12 08:43 cp-garden/market-final.txt
+
+cp-garden/links/:
+total 4
+19142486 lrwxrwxrwx 1 gic-sok-vireak gic-sok-vireak 19 Nov 12 08:44 first.txt -> ../market-final.txt
+19142485 -rw-rw-r-- 2 gic-sok-vireak gic-sok-vireak 25 Nov 12 08:43 hard.txt
+19142487 lrwxrwxrwx 1 gic-sok-vireak gic-sok-vireak  9 Nov 12 08:43 second.txt -> first.txt
+first stores: ../market-final.txt
+second stores: first.txt
+hard: checkpoint garden market
+end of chain: checkpoint garden market
