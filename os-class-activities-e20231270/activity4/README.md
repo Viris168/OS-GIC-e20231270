@@ -3,7 +3,7 @@
 - **Student Name:** Sok Vireak
 - **Student ID:** e20231270
 - **Date:** 2026-11-20
-- **Partner Name:** Winner
+- **Partner Name:** Tha Winner
 - **Partner Student ID:** e20230181
 - **Server Machine Owner:** Sok Vireak (Student A, Windows with WSL Ubuntu)
 - **Server IP Address:** 172.20.10.3
